@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ui2027399/ui/Instagram_Sena.dart';
 import 'package:ui2027399/ui/LinearUI.dart';
+import 'package:ui2027399/ui/MusicUI.dart';
 
 void main() {
   runApp(MyApp());
@@ -15,8 +16,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.red,
       ),
-      home: InstagramSena(),
+      home: MusicUI(),
     );
   }
 }
-
