@@ -14,6 +14,7 @@ class MusicUI extends StatelessWidget {
             padding: const EdgeInsets.all(10.0),
             child: Column(
               children: [
+                //Banner
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -54,6 +55,8 @@ class MusicUI extends StatelessWidget {
                 SizedBox(
                   height: 15,
                 ),
+
+                //Search
                 Container(
                   width: size.width * 0.9,
                   decoration: BoxDecoration(
@@ -91,6 +94,8 @@ class MusicUI extends StatelessWidget {
                 SizedBox(
                   height: 15,
                 ),
+
+                //MainImg
                 Container(
                   width: size.width * 0.9,
                   height: size.height * 0.3,
@@ -115,11 +120,10 @@ class MusicUI extends StatelessWidget {
                           height: size.height * 0.1,
                           decoration: BoxDecoration(
                             gradient: LinearGradient(
-                                colors: [mainColor,Colors.black12],
-                                stops: [0.3,1],
+                                colors: [mainColor, Colors.black12],
+                                stops: [0.3, 1],
                                 begin: FractionalOffset.bottomCenter,
-                                end: FractionalOffset.topCenter
-                            ),
+                                end: FractionalOffset.topCenter),
                             borderRadius: BorderRadius.only(
                               bottomLeft: Radius.circular(40),
                               bottomRight: Radius.circular(40),
@@ -132,7 +136,9 @@ class MusicUI extends StatelessWidget {
                                 Text(
                                   'Daft Punk',
                                   style: TextStyle(
-                                      color: Colors.white, fontSize: 25),
+                                      color: Colors.white,
+                                      fontSize: 25,
+                                      fontFamily: 'Redressed'),
                                 ),
                                 Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
@@ -153,7 +159,100 @@ class MusicUI extends StatelessWidget {
                       )
                     ],
                   ),
-                )
+                ),
+                SizedBox(
+                  height: 15,
+                ),
+
+                //Gallery
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      'Artistas',
+                      style: TextStyle(
+                          color: Colors.white, fontFamily: 'Redressed'),
+                    ),
+                    Text(
+                      'Explorar',
+                      style: TextStyle(
+                          color: Colors.white, fontFamily: 'Redressed'),
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  height: 5,
+                ),
+                Stack(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        FadeInImage.assetNetwork(
+                          placeholder: 'assets/image/daft.jpg',
+                          image:
+                              'https://i.pinimg.com/originals/06/9c/cf/069ccf1458c6c3aab31ceb0374d67bbd.jpg',
+                          width: size.width * 0.3,
+                          height: size.width * 0.3,
+                          fit: BoxFit.cover,
+                        ),
+                        FadeInImage.assetNetwork(
+                          placeholder: 'assets/image/daft.jpg',
+                          image:
+                              'https://www.clubbingspain.com/imagenes/Daft-Punk-TRON-Legacy.jpg',
+                          width: size.width * 0.3,
+                          height: size.width * 0.3,
+                          fit: BoxFit.cover,
+                        ),
+                        FadeInImage.assetNetwork(
+                          placeholder: 'assets/image/daft.jpg',
+                          image:
+                              'https://rock101online.mx/wp-content/uploads/2020/12/tronr0ck-874x733.png',
+                          width: size.width * 0.3,
+                          height: size.width * 0.3,
+                          fit: BoxFit.cover,
+                        ),
+                      ],
+                    ),
+                    Positioned(
+                      bottom: size.width * 0.1,
+                      left: 10,
+                      child: Container(
+                        width: size.width * 0.9,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Icon(
+                              Icons.arrow_back_ios_outlined,
+                              color: Colors.white,
+                              size: 50,
+                            ),
+                            Icon(
+                              Icons.arrow_forward_ios_outlined,
+                              color: Colors.white,
+                              size: 50,
+                            ),
+                          ],
+                        ),
+                      ),
+                    )
+                  ],
+                ),
+
+                //Menu
+                SizedBox(
+                  height: 15,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Icon(Icons.person, color: Colors.deepPurple, size: 40,),
+                    Icon(Icons.settings_rounded, color: Colors.deepPurple, size: 40,),
+                    Icon(Icons.home, color: Colors.purple, size: 40,),
+                    Icon(Icons.add_a_photo, color: Colors.deepPurple, size: 40,),
+                    Icon(Icons.backup, color: Colors.deepPurple, size: 40,),
+                  ],
+                ),
               ],
             ),
           ),
