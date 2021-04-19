@@ -1,7 +1,33 @@
 import 'package:flutter/material.dart';
 import 'package:ui2027399/main.dart';
 
-class MusicUI extends StatelessWidget {
+class MusicUI extends StatefulWidget {
+  @override
+  _MusicUIState createState() => _MusicUIState();
+}
+
+class _MusicUIState extends State<MusicUI> {
+
+  bool _auxInt = false;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+  }
+
+  @override
+  void setState(fn) {
+    // TODO: implement setState
+    super.setState(fn);
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -18,6 +44,15 @@ class MusicUI extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
+                    InkWell(
+                      onTap: (){
+                        Navigator.of(context).pop();
+                      },
+                      child: Icon(
+                        Icons.arrow_back,
+                        color: Colors.white,
+                      ),
+                    ),
                     Column(
                       children: [
                         Text(
@@ -120,7 +155,7 @@ class MusicUI extends StatelessWidget {
                           height: size.height * 0.1,
                           decoration: BoxDecoration(
                             gradient: LinearGradient(
-                                colors: [mainColor, Colors.black12],
+                                colors: [mainColor, _auxInt == false ? Colors.black12 : Colors.red],
                                 stops: [0.3, 1],
                                 begin: FractionalOffset.bottomCenter,
                                 end: FractionalOffset.topCenter),
@@ -165,93 +200,245 @@ class MusicUI extends StatelessWidget {
                 ),
 
                 //Gallery
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      'Artistas',
-                      style: TextStyle(
-                          color: Colors.white, fontFamily: 'Redressed'),
-                    ),
-                    Text(
-                      'Explorar',
-                      style: TextStyle(
-                          color: Colors.white, fontFamily: 'Redressed'),
-                    ),
-                  ],
-                ),
-                SizedBox(
-                  height: 5,
-                ),
-                Stack(
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                Container(
+                  height: size.height*0.4,
+                  width: size.width*0.9,
+                  child: SingleChildScrollView(
+                    child: Column(
                       children: [
-                        FadeInImage.assetNetwork(
-                          placeholder: 'assets/image/daft.jpg',
-                          image:
-                              'https://i.pinimg.com/originals/06/9c/cf/069ccf1458c6c3aab31ceb0374d67bbd.jpg',
-                          width: size.width * 0.3,
-                          height: size.width * 0.3,
-                          fit: BoxFit.cover,
-                        ),
-                        FadeInImage.assetNetwork(
-                          placeholder: 'assets/image/daft.jpg',
-                          image:
-                              'https://www.clubbingspain.com/imagenes/Daft-Punk-TRON-Legacy.jpg',
-                          width: size.width * 0.3,
-                          height: size.width * 0.3,
-                          fit: BoxFit.cover,
-                        ),
-                        FadeInImage.assetNetwork(
-                          placeholder: 'assets/image/daft.jpg',
-                          image:
-                              'https://rock101online.mx/wp-content/uploads/2020/12/tronr0ck-874x733.png',
-                          width: size.width * 0.3,
-                          height: size.width * 0.3,
-                          fit: BoxFit.cover,
-                        ),
-                      ],
-                    ),
-                    Positioned(
-                      bottom: size.width * 0.1,
-                      left: 10,
-                      child: Container(
-                        width: size.width * 0.9,
-                        child: Row(
+                        Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Icon(
-                              Icons.arrow_back_ios_outlined,
-                              color: Colors.white,
-                              size: 50,
+                            Text(
+                              'Artistas',
+                              style: TextStyle(
+                                  color: Colors.white, fontFamily: 'Redressed'),
                             ),
-                            Icon(
-                              Icons.arrow_forward_ios_outlined,
-                              color: Colors.white,
-                              size: 50,
+                            Text(
+                              'Explorar',
+                              style: TextStyle(
+                                  color: Colors.white, fontFamily: 'Redressed'),
                             ),
                           ],
                         ),
-                      ),
-                    )
-                  ],
-                ),
+                        SizedBox(
+                          height: 5,
+                        ),
+                        Stack(
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                FadeInImage.assetNetwork(
+                                  placeholder: 'assets/image/daft.jpg',
+                                  image:
+                                      'https://i.pinimg.com/originals/06/9c/cf/069ccf1458c6c3aab31ceb0374d67bbd.jpg',
+                                  width: size.width * 0.3,
+                                  height: size.width * 0.3,
+                                  fit: BoxFit.cover,
+                                ),
+                                FadeInImage.assetNetwork(
+                                  placeholder: 'assets/image/daft.jpg',
+                                  image:
+                                      'https://www.clubbingspain.com/imagenes/Daft-Punk-TRON-Legacy.jpg',
+                                  width: size.width * 0.3,
+                                  height: size.width * 0.3,
+                                  fit: BoxFit.cover,
+                                ),
+                                FadeInImage.assetNetwork(
+                                  placeholder: 'assets/image/daft.jpg',
+                                  image:
+                                      'https://rock101online.mx/wp-content/uploads/2020/12/tronr0ck-874x733.png',
+                                  width: size.width * 0.3,
+                                  height: size.width * 0.3,
+                                  fit: BoxFit.cover,
+                                ),
+                              ],
+                            ),
+                            Positioned(
+                              bottom: size.width * 0.1,
+                              left: 10,
+                              child: Container(
+                                width: size.width * 0.9,
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Icon(
+                                      Icons.arrow_back_ios_outlined,
+                                      color: Colors.white,
+                                      size: 50,
+                                    ),
+                                    Icon(
+                                      Icons.arrow_forward_ios_outlined,
+                                      color: Colors.white,
+                                      size: 50,
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            )
+                          ],
+                        ),
 
-                //Menu
-                SizedBox(
-                  height: 15,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Icon(Icons.person, color: Colors.deepPurple, size: 40,),
-                    Icon(Icons.settings_rounded, color: Colors.deepPurple, size: 40,),
-                    Icon(Icons.home, color: Colors.purple, size: 40,),
-                    Icon(Icons.add_a_photo, color: Colors.deepPurple, size: 40,),
-                    Icon(Icons.backup, color: Colors.deepPurple, size: 40,),
-                  ],
+                        //Menu
+                        SizedBox(
+                          height: 15,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Icon(Icons.person, color: Colors.deepPurple, size: 40,),
+                            Icon(Icons.settings_rounded, color: Colors.deepPurple, size: 40,),
+                            InkWell(
+                              onTap: (){
+                                setState(() {
+                                  _auxInt = !_auxInt;
+                                  print(_auxInt);
+                                });
+                              },
+                                child: Icon(Icons.home, color: Colors.purple, size: 40,)),
+                            Icon(Icons.add_a_photo, color: Colors.deepPurple, size: 40,),
+                            Icon(Icons.backup, color: Colors.deepPurple, size: 40,),
+                          ],
+                        ),
+
+                        Container(
+                          width: size.width * 0.9,
+                          height: size.height * 0.3,
+                          decoration: BoxDecoration(
+                            color: Colors.white.withOpacity(0.1),
+                            borderRadius: BorderRadius.circular(40),
+                          ),
+                          child: Stack(
+                            children: [
+                              ClipRRect(
+                                borderRadius: BorderRadius.all(Radius.circular(40)),
+                                child: Image.asset(
+                                  'assets/image/daft.jpg',
+                                  height: size.height * 0.3,
+                                  fit: BoxFit.cover,
+                                ),
+                              ),
+                              Positioned(
+                                bottom: 0,
+                                child: Container(
+                                  width: size.width * 0.9,
+                                  height: size.height * 0.1,
+                                  decoration: BoxDecoration(
+                                    gradient: LinearGradient(
+                                        colors: [mainColor, Colors.black12],
+                                        stops: [0.3, 1],
+                                        begin: FractionalOffset.bottomCenter,
+                                        end: FractionalOffset.topCenter),
+                                    borderRadius: BorderRadius.only(
+                                      bottomLeft: Radius.circular(40),
+                                      bottomRight: Radius.circular(40),
+                                    ),
+                                  ),
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Column(
+                                      children: [
+                                        Text(
+                                          'Daft Punk',
+                                          style: TextStyle(
+                                              color: Colors.white,
+                                              fontSize: 25,
+                                              fontFamily: 'Redressed'),
+                                        ),
+                                        Row(
+                                          mainAxisAlignment: MainAxisAlignment.center,
+                                          children: [
+                                            Text(
+                                              '. . .',
+                                              style: TextStyle(
+                                                  color: Colors.white,
+                                                  fontSize: 25,
+                                                  fontWeight: FontWeight.bold),
+                                            ),
+                                          ],
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                        SizedBox(
+                          height: 15,
+                        ),
+                        Container(
+                          width: size.width * 0.9,
+                          height: size.height * 0.3,
+                          decoration: BoxDecoration(
+                            color: Colors.white.withOpacity(0.1),
+                            borderRadius: BorderRadius.circular(40),
+                          ),
+                          child: Stack(
+                            children: [
+                              ClipRRect(
+                                borderRadius: BorderRadius.all(Radius.circular(40)),
+                                child: Image.asset(
+                                  'assets/image/daft.jpg',
+                                  height: size.height * 0.3,
+                                  fit: BoxFit.cover,
+                                ),
+                              ),
+                              Positioned(
+                                bottom: 0,
+                                child: Container(
+                                  width: size.width * 0.9,
+                                  height: size.height * 0.1,
+                                  decoration: BoxDecoration(
+                                    gradient: LinearGradient(
+                                        colors: [mainColor, Colors.black12],
+                                        stops: [0.3, 1],
+                                        begin: FractionalOffset.bottomCenter,
+                                        end: FractionalOffset.topCenter),
+                                    borderRadius: BorderRadius.only(
+                                      bottomLeft: Radius.circular(40),
+                                      bottomRight: Radius.circular(40),
+                                    ),
+                                  ),
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Column(
+                                      children: [
+                                        Text(
+                                          'Daft Punk',
+                                          style: TextStyle(
+                                              color: Colors.white,
+                                              fontSize: 25,
+                                              fontFamily: 'Redressed'),
+                                        ),
+                                        Row(
+                                          mainAxisAlignment: MainAxisAlignment.center,
+                                          children: [
+                                            Text(
+                                              '. . .',
+                                              style: TextStyle(
+                                                  color: Colors.white,
+                                                  fontSize: 25,
+                                                  fontWeight: FontWeight.bold),
+                                            ),
+                                          ],
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                        SizedBox(
+                          height: 15,
+                        ),
+                      ],
+                    ),
+                  ),
                 ),
               ],
             ),
@@ -261,3 +448,15 @@ class MusicUI extends StatelessWidget {
     );
   }
 }
+
+class MusicAux extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Center(
+        child: Text('¿asdfasdf'),
+      ),
+    );
+  }
+}
+

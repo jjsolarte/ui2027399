@@ -1,6 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:ui2027399/ui/MusicUI.dart';
 
-class LinearUI extends StatelessWidget {
+class LinearUI extends StatefulWidget {
+  @override
+  _LinearUIState createState() => _LinearUIState();
+}
+
+class _LinearUIState extends State<LinearUI> {
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    Future.delayed(const Duration(seconds: 4, milliseconds: 500), (){
+      Navigator.of(context)
+          .push(
+          MaterialPageRoute(builder: (context) => MusicUI()));
+    });
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -62,6 +80,11 @@ class LinearUI extends StatelessWidget {
         ),
       ),
       floatingActionButton: FloatingActionButton(
+        onPressed: (){
+          Navigator.of(context)
+              .push(
+              MaterialPageRoute(builder: (context) => MusicUI()));
+        },
         backgroundColor: Colors.blueAccent,
         child: Icon(Icons.add),
       ),
