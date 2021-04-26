@@ -83,7 +83,10 @@ class _LinearUIState extends State<LinearUI> {
         onPressed: (){
           Navigator.of(context)
               .push(
-              MaterialPageRoute(builder: (context) => MusicUI()));
+              MaterialPageRoute(builder: (context) => MusicUI())).
+          then((value) => {
+            print('ventana cerrada --------------------------')
+          });
         },
         backgroundColor: Colors.blueAccent,
         child: Icon(Icons.add),
