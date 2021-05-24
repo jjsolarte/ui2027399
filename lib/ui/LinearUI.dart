@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ui2027399/ui/MusicUI.dart';
+import 'package:ui2027399/ui/login/login_page.dart';
 
 class LinearUI extends StatefulWidget {
   @override
@@ -14,7 +15,7 @@ class _LinearUIState extends State<LinearUI> {
     Future.delayed(const Duration(seconds: 4, milliseconds: 500), (){
       Navigator.of(context)
           .push(
-          MaterialPageRoute(builder: (context) => MusicUI()));
+          MaterialPageRoute(builder: (context) => LoginPage()));
     });
     super.initState();
   }
