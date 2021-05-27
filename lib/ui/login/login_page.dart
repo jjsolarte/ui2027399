@@ -3,6 +3,8 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ui2027399/bloc/login/login_bloc.dart';
+import 'package:ui2027399/models/user_model.dart';
+import 'package:ui2027399/ui/home/home_page.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key key}) : super(key: key);
@@ -15,6 +17,8 @@ class _LoginPageState extends State<LoginPage> {
   TextEditingController emailController, passwordController;
 
   LoginBloc loginBloc;
+
+  UserModel _userModel;
 
   @override
   void initState() {
@@ -36,6 +40,12 @@ class _LoginPageState extends State<LoginPage> {
           listener: (context, state){
             if(state is LoginFailureState){
               print('Error al iniciar sesión');
+            }
+            if(state is LoginSucessState){
+              print('Bienvenido a nuestra App');
+              Navigator.of(context)
+                  .push(
+                  MaterialPageRoute(builder: (context) => HomePage()));
             }
           },
           child: BlocBuilder<LoginBloc, LoginState>(
@@ -66,6 +76,13 @@ class _LoginPageState extends State<LoginPage> {
                     SizedBox(
                       height: 20,
                     ),
+                    
+                    InkWell(
+                      onTap: doRestartPassword,
+                        child: Text('Recuperar contraseña', style: TextStyle(fontWeight: FontWeight.bold),)),
+                    SizedBox(
+                      height: 20,
+                    ),
 
                     //Btn Ingresar
                     if (state is LoginLoadingState)
@@ -91,6 +108,8 @@ class _LoginPageState extends State<LoginPage> {
                           ),
                         ),
                       )
+                    
+                    
                   ],
                 ),
               );
@@ -103,8 +122,9 @@ class _LoginPageState extends State<LoginPage> {
 
   void doLogin() {
     if (emailController.text != '' && passwordController.text != '') {
-      loginBloc.add(LoginSignInEvent(
-          email: emailController.text, password: passwordController.text));
+      _userModel = UserModel('Nombre defecto', 'Apellido ', emailController.text, passwordController.text);
+      loginBloc.add(LoginSignInEvent(email:
+          emailController.text, password: passwordController.text, userModel: _userModel));
     } else {
       print('Completar los datos');
     }
@@ -114,5 +134,9 @@ class _LoginPageState extends State<LoginPage> {
     loginBloc = BlocProvider.of<LoginBloc>(context);
     emailController = TextEditingController();
     passwordController = TextEditingController();
+  }
+
+  void doRestartPassword() {
+    //Hacer la lógica para restablecer contraseña
   }
 }

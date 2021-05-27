@@ -20,11 +20,12 @@ class LoginLoadingState extends LoginState{
 
 class LoginSucessState extends LoginState{
   final bool res;
+  final UserModel userModel;
 
-  LoginSucessState({@required this.res});
+  LoginSucessState({@required this.res, this.userModel});
 
   @override
-  List<Object> get props => [res];
+  List<Object> get props => [res, userModel];
 
 }
 
@@ -38,3 +39,4 @@ class LoginFailureState extends LoginState{
 
 }
 
+//Hacer el state que retorna de Recuperar contraseña

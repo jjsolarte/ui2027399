@@ -6,10 +6,13 @@ abstract class LoginEvent extends Equatable {
 
 class LoginSignInEvent extends LoginEvent{
   String email, password;
+  UserModel userModel;
 
-  LoginSignInEvent({@required this.email,@required this.password});
+  LoginSignInEvent({@required this.email,@required this.password,@required this.userModel});
 
   @override
-  List<Object> get props => [email, password];
+  List<Object> get props => [email, password, userModel];
 
 }
+
+//Hacer el evento que llama Recuperar contraseña
